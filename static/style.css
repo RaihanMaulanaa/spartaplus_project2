@@ -1,0 +1,139 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.wrap {
+  /* kita menggunakan rga untuk menentukan tingkat kegelapan  */
+  background-color: RGBA(232, 52, 78, 0.2);
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.banner {
+  width: 100%;
+  height: 200px;
+
+  background-color: white;
+  background-position: center;
+  background-image: url("logo_red.png");
+  /* mengatur sesuai elmen yang dimuat */
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+span .example {
+  color: gray;
+  font-size: 14px;
+}
+
+button.btn-sparta {
+  color: white;
+  background-color: #e8344e;
+  border: 1px solid #e8344e;
+}
+
+button.btn-sparta-outline {
+  color: #e8344e;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid #e8344e;
+}
+
+/* ---------------------------------------------------- */
+/* halaman index */
+/* ---------------------------------------------------- */
+
+.search-box {
+  width: 70%;
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.table {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.table th {
+  border-top-style: none;
+}
+
+.td {
+  background-color: white;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+td > a,
+a:visited,
+a:hover,
+a:active {
+  color: black;
+}
+
+thead:first-child tr:first-child th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+thead:first-child tr:first-child th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+tbody:last-child tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+tbody:last-child tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+tr.highlight > td {
+  background-color: orange;
+  color: white;
+}
+
+tr.highlight a {
+  text-decoration: none;
+  color: white;
+}
+
+/* -------------------------------------------------------------------- */
+.container-error {
+  width: 80%;
+  max-width: 780px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 10px;
+
+}
+
+button.btn-txt {
+  margin: 5px;
+}
+
+button.btn-txt a {
+  text-decoration: none;
+  color: white;
+}
+
+button.btn-txt a:hover {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- link css manual -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- link JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- link JS Boostrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- link CSS Boostrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+    <!-- scripts js manual -->
+    <script>
+      {% if msg %}
+        alert("{{ msg }}")
+      {% endif %}
+
+    </script>
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="banner" onclick="window.location.href= '/';"></div>
+      <div class="container-error">
+        <div class="d-flex justify-content-between align-items-end">
+          <div>
+            {% if msg %}
+              <h1>{{ msg }}</h1>
+              {% if suggestions %}
+                <h4>kata yang dapat disarankan :</h4>
+                {% for suggestion in suggestions %}
+                <button type="button" class="btn btn-txt btn-primary">
+                  <a href="{{ url_for('detail', keyword=suggestion, status_give='new', msg=msg) }}">
+                    {{ suggestion }}
+                  </a>
+                </button>
+                {% endfor %} 
+              {% endif %}
+            {% endif %}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="/" class="nav-link px-2 text-muted">Home</a>
+        </li>
+      </ul>
+      <p class="text-center text-muted">
+        Raihan Maulana Copyright © 2023 All Rights Reserved
+      </p>
+    </footer>
+  </body>
+</html>

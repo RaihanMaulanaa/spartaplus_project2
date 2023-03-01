@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="My Personal Word List" />
+    <meta property="og:description" content="A collection of my words" />
+    <meta
+      property="og:image"
+      content="{{url_for('static', filename='logo_red.png')}}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='logo_red.ico')}}"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="{{url_for('static', filename='logo_red.ico')}}"
+      type="image/x-icon"
+    />
+    <title>test Footer</title>
+
+    <!-- link css manual -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- link JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <!-- link Boostrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Script Js manual -->
+    <script>
+      let words = {{ words | tojson }};
+      let word_list = [];
+      for (let i =0; i<words.length; i++) {
+        word_list.push(words[i].word)
+      }
+      function find_word() {
+        let word = $('#input-word').val().toLowerCase().trim();
+        if (!word) {
+          alert('Silahkan masukkan kata kunci terlebih dahulu:)')
+          return;
+        }
+        if (word_list.includes(word)) {
+          let row = $(`#word-${word}`);
+          row.addClass('highlight');
+          row.siblings().removeClass('highlight');
+          row[0]. scrollIntoView();
+        } else {
+          window.location.href = `/detail/${word}?status_give=new`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="banner" onclick="window.location.href = '/'"></div>
+      <div class="search-box d-flex justify-content-center">
+        <input
+          type="text"
+          class="form-control"
+          style="margin-right: 0.5rem"
+          id="input-word"
+        />
+        <button class="btn btn-light" onclick="find_word()">SEARCH</button>
+      </div>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" style="width: 30%">WORD</th>
+            <th scope="col">MEANING</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-box">
+          {% for word in words %}
+          <tr id="word-{{word.word}}">
+            <td>
+              <a href="/detail/{{word.word}}?status_give=old">{{ word.word}}</a>
+            </td>
+            <td>{{word.definition}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="/detail/example" class="nav-link px-2 text-muted">Detail</a>
+        </li>
+      </ul>
+      <p class="text-center text-muted">
+        Raihan Maulana Copyright © 2023 All Rights Reserved
+      </p>
+    </footer>
+    <!-- link JS Boostrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
