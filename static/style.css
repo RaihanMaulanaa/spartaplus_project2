@@ -1,6 +1,9 @@
-html {
+/* html,
+body {
   scroll-behavior: smooth;
-}
+  transition-duration: 0.5s
+
+} */
 
 .wrap {
   /* kita menggunakan rga untuk menentukan tingkat kegelapan  */
@@ -121,7 +124,6 @@ tr.highlight a {
   background-color: white;
   border: 1px solid gray;
   border-radius: 10px;
-
 }
 
 button.btn-txt {
